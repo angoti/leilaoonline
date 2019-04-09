@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.angoti.modelo.LeilaoOperacoes;
+import com.angoti.semdefinicao.Acao;
+import com.angoti.semdefinicao.Acoes;
+import com.angoti.semdefinicao.ItensDoLeilao;
 
 /**
  * Servlet implementation class Controle
@@ -17,31 +19,29 @@ import com.angoti.modelo.LeilaoOperacoes;
 @WebServlet(urlPatterns = { "/Controle", "" })
 public class Controle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	LeilaoOperacoes operacao;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public Controle() {
 		super();
-		operacao = new LeilaoOperacoes();
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// comando cadastrar
-		if (request.getParameter("acao") != null && request.getParameter("acao").equals("cadastrar")) {
-			operacao.cadastro(request);
-		} else if (request.getParameter("acao") != null && request.getParameter("acao").equals("abrir_leilao")) {// comando abrir leilão
-			operacao.abreLeilao(request);
-		} else if (request.getParameter("acao") != null && request.getParameter("acao").equals("encerrar_leilao")) {
-			operacao.encerraLeilao(request);
+		// Encaminha a requisição do cliente para a ação correspondente
+		String view;
+		String acao = request.getParameter("acao");
+		if (acao != null) {
+			Acao requisicaoDoCliente = Acoes.acoes.get(acao);
+			view = requisicaoDoCliente.executa(request);
+		} else {//requisição sem ação
+			ItensDoLeilao carregaItens = new ItensDoLeilao();
+			view = carregaItens.carregaItensDoLeilao(request);
 		}
-		operacao.carregaObjetos(request);
-
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
 

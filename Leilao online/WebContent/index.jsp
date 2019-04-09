@@ -5,6 +5,7 @@
 <head>
 <!-- Theme Made By www.w3schools.com -->
 <title>Leilão online</title>
+<link rel="shortcut icon" href="http://www.pkicon.com/icons/22510/Gavel-256.png" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -211,9 +212,12 @@ footer .glyphicon {
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="http://localhost:8080/Leilao_online/">Leilão online</a>
+				
+				<a class="navbar-brand" href="http://localhost:8080/leilao">Leilão online<img src="http://www.pkicon.com/icons/22510/Gavel-256.png" width="60"></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -240,7 +244,7 @@ footer .glyphicon {
 			<h1>Cadastro de item de leilão</h1>
 		</div>
 
-		<form action="http://localhost:8080/Leilao_online/Controle">
+		<form action="http://localhost:8080/leilao">
 			<input type="hidden" name="acao" value="cadastrar">
 			<div class="form-group">
 				<label for="nome">Nome do item:</label> <input type="text" class="form-control" id="nome" placeholder="Digite o nome do item a ser leiloado" name="nome">
@@ -259,7 +263,7 @@ footer .glyphicon {
 			<h1>Abertura de leilão</h1>
 		</div>
 
-		<form action="http://localhost:8080/Leilao_online/Controle">
+		<form action="http://localhost:8080/leilao">
 			<input type="hidden" name="acao" value="abrir_leilao">
 			<div class="form-group">
 				<label for="sel1">Selecione um item:</label> <select class="form-control" id="sel1" name="abrir_leilao">
@@ -281,11 +285,10 @@ footer .glyphicon {
 			<h1>Encerra um leilão</h1>
 		</div>
 
-		<form action="http://localhost:8080/Leilao_online/Controle">
+		<form action="http://localhost:8080/leilao">
 			<input type="hidden" name="acao" value="encerrar_leilao">
 			<div class="form-group">
-				<label for="sel1">Selecione um item:</label> 
-				<select class="form-control" id="sel1" name="encerrar_leilao">
+				<label for="sel1">Selecione um item:</label> <select class="form-control" id="sel1" name="encerrar_leilao">
 					<c:forEach var="item" items="${lista}">
 						<c:if test="${item.status}">
 							<option value="${item.id}">${item.nome}</option>
