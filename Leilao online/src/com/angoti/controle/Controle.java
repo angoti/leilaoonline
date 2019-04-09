@@ -1,4 +1,4 @@
-package com.angoti;
+package com.angoti.controle;
 
 import java.io.IOException;
 
