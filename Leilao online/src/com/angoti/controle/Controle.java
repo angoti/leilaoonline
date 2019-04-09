@@ -32,11 +32,11 @@ public class Controle extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// comando cadastrar
-		if (request.getParameter("command") != null && request.getParameter("command").equals("cadastrar")) {
+		if (request.getParameter("acao") != null && request.getParameter("acao").equals("cadastrar")) {
 			operacao.cadastro(request);
-		} else if (request.getParameter("command") != null && request.getParameter("command").equals("abrir_leilao")) {// comando abrir leilão
+		} else if (request.getParameter("acao") != null && request.getParameter("acao").equals("abrir_leilao")) {// comando abrir leilão
 			operacao.abreLeilao(request);
-		} else if (request.getParameter("command") != null && request.getParameter("command").equals("encerrar_leilao")) {
+		} else if (request.getParameter("acao") != null && request.getParameter("acao").equals("encerrar_leilao")) {
 			operacao.encerraLeilao(request);
 		}
 		operacao.carregaObjetos(request);

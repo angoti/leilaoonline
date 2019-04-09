@@ -241,7 +241,7 @@ footer .glyphicon {
 		</div>
 
 		<form action="http://localhost:8080/Leilao_online/Controle">
-			<input type="hidden" name="command" value="cadastrar">
+			<input type="hidden" name="acao" value="cadastrar">
 			<div class="form-group">
 				<label for="nome">Nome do item:</label> <input type="text" class="form-control" id="nome" placeholder="Digite o nome do item a ser leiloado" name="nome">
 			</div>
@@ -260,7 +260,7 @@ footer .glyphicon {
 		</div>
 
 		<form action="http://localhost:8080/Leilao_online/Controle">
-			<input type="hidden" name="command" value="abrir_leilao">
+			<input type="hidden" name="acao" value="abrir_leilao">
 			<div class="form-group">
 				<label for="sel1">Selecione um item:</label> <select class="form-control" id="sel1" name="abrir_leilao">
 					<c:forEach var="item" items="${lista}">
@@ -282,7 +282,7 @@ footer .glyphicon {
 		</div>
 
 		<form action="http://localhost:8080/Leilao_online/Controle">
-			<input type="hidden" name="command" value="encerrar_leilao">
+			<input type="hidden" name="acao" value="encerrar_leilao">
 			<div class="form-group">
 				<label for="sel1">Selecione um item:</label> 
 				<select class="form-control" id="sel1" name="encerrar_leilao">
