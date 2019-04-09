@@ -1,4 +1,4 @@
-package com.angoti;
+package com.angoti.modelo;
 
 public class Leilao {
 	private Lance lanceVencedor;
